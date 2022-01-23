@@ -1,13 +1,8 @@
 #!/usr/bin/python
 import sys
 import Adafruit_DHT
-
 from datetime import datetime
 
-today = datetime.now()
-
 humidity, temperature = Adafruit_DHT.read_retry(11, 17)
-
-#print (f'Temp: {temperature} C  Humidity: {humidity} %')
-with open(f'/home/pi/PI-THmon/{today.strftime("%Y-%m-%d")}.txt', "a") as myfile:
-    myfile.write(f'{today.strftime("%H-%M-%S")},{temperature},{humidity}\n')
+with open(f'/home/pi/PI-THmon/{datetime.now().strftime("%Y-%m-%d")}.txt', "a") as myfile:
+    myfile.write(f'{datetime.now().strftime("%H-%M-%S")},{temperature},{humidity}\n')
