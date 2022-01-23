@@ -4,8 +4,10 @@ import Adafruit_DHT
 
 from datetime import datetime
 
+today = datetime.now()
+
 humidity, temperature = Adafruit_DHT.read_retry(11, 17)
 
 #print (f'Temp: {temperature} C  Humidity: {humidity} %')
-with open(f"{datetime.now().today()}.txt", "a") as myfile:
-    myfile.write(f'{datetime.now().time()}{temperature},{humidity}\n')
+with open(f'{today.strftime("%Y-%m-%d")}.txt', "a") as myfile:
+    myfile.write(f'{today.strftime("%H-%M-%S")},{temperature},{humidity}\n')
